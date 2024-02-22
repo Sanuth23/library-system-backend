@@ -15,18 +15,18 @@ public class BookController {
 
     final BookService service;
 
-    @PostMapping
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addBook(@RequestBody Book book){
         service.addBook(book);
     }
 
-    @GetMapping
+    @GetMapping("/get")
     public Iterable<BookEntity> getBooks(){
         return service.getBooks();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> deleteBook(@PathVariable Long id){
         return (service.deleteBook(id)) ?
