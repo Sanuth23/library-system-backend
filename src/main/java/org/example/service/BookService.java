@@ -9,4 +9,6 @@ public interface BookService {
     Iterable<BookEntity> getBooks();
 
     boolean deleteBook(Long id);
+
+    Book getBookById(Long id);
 }
