@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/book")
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class BookController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteBook(@PathVariable Long id){
+    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         return (service.deleteBook(id)) ?
                 ResponseEntity.ok("Book Deleted...") :
                 ResponseEntity.notFound().build();
