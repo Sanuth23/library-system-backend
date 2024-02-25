@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +31,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookEntity> getBooks() {
-        return repository.findAll();
-
+    public List<Book> getBooks() {
+        List<Book> bookList = new ArrayList<>();
+        List<BookEntity> entityList = repository.findAll();
+        for (BookEntity entity:entityList) {
+            Book book = mapper.map(entity, Book.class);
+            bookList.add(book);
+        }
+        return bookList;
     }
 
     @Override
