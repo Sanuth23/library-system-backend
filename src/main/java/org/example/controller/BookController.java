@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/book")
@@ -23,7 +25,7 @@ public class BookController {
     }
 
     @GetMapping("/get")
-    public Iterable<BookEntity> getBooks(){
+    public List<Book> getBooks(){
         return service.getBooks();
     }
 
